@@ -10,14 +10,31 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%
 %% Theorems
 \usepackage{amsthm}
+
+\begingroup
+\makeatletter
+\@for\theoremstyle:=definition,remark,plain\do{%
+	\expandafter\g@addto@macro\csname th@\theoremstyle\endcsname{%
+		\addtolength\thm@preskip\parskip
+	}%
+}
+\endgroup
+
+\theoremstyle{plain}
 \newtheorem{theorem}{Theorem}
-\newtheorem{definition}[theorem]{Definition}
 \newtheorem{claim}[theorem]{Claim}
 \newtheorem{lemma}[theorem]{Lemma}
 \newtheorem*{lemma*}{Lemma}
 \newtheorem{proposition}[theorem]{Proposition}
 \newtheorem{corollary}[theorem]{Corollary}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{openquestion}[theorem]{Open Question}
+
+\theoremstyle{remark}
 \newtheorem{observation}[theorem]{Observation}
+\newtheorem{remark}[theorem]{Remark}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%
 %% Pretty references
@@ -31,6 +48,8 @@
 \newcommand{\observationref}[1]{\namedref{Observation}{#1}}
 \newcommand{\lemmaref}[1]{\namedref{Lemma}{#1}}
 \newcommand{\claimref}[1]{\namedref{Claim}{#1}}
+\newcommand{\remarkref}[1]{\namedref{Remark}{#1}}
+\newcommand{\openquestionref}[1]{\namedref{Open Question}{#1}}
 \newcommand{\figureref}[1]{\namedref{Figure}{#1}}
 \newcommand{\subfigureref}[2]{\hyperref[#1]{Figure~\ref*{#1}#2}}
 \newcommand{\equationref}[1]{\namedref{Equation}{#1}}
@@ -75,6 +94,7 @@
 \usepackage{pgfplots}
 \usetikzlibrary{positioning}
 \usetikzlibrary{arrows.meta}
+\usepackage{wrapfig}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%
 %% Allow pages to be formatted landscape
