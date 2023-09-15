@@ -1,5 +1,4 @@
 *
 !.gitignore
 !header.tex
-!complexity-classes.tex
-!Makefile
+!macros.tex
